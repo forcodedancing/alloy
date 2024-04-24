@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"enum":["BlockId","BlockNumberOrTag","ParseBlockIdError","ParseBlockNumberError"],"struct":["HexStringMissingPrefixError","RpcBlockHash"]};
