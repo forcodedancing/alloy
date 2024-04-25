@@ -422,6 +422,10 @@ pub struct ChainConfig {
     /// Clique parameters.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub clique: Option<CliqueConfig>,
+
+    /// Parlia parameters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub parlia: Option<ParliaConfig>,
 }
 
 impl ChainConfig {
@@ -528,6 +532,18 @@ pub struct EthashConfig {}
 /// Consensus configuration for Clique.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 pub struct CliqueConfig {
+    /// Number of seconds between blocks to enforce.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub period: Option<u64>,
+
+    /// Epoch length to reset votes and checkpoints.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub epoch: Option<u64>,
+}
+
+/// Consensus configuration for Parlia.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ParliaConfig {
     /// Number of seconds between blocks to enforce.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub period: Option<u64>,
